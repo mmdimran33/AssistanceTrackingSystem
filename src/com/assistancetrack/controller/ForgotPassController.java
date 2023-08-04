@@ -11,27 +11,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.assistancetrack.bean.AuthenticationBean;
 import com.assistancetrack.dao.ForgotPassDao;
+import com.assistancetrack.service.ForgotPassService;
 
 @Controller
 public class ForgotPassController {
-	int status =0;
-	String actionMessage =null;
-	@Autowired ForgotPassDao forgotPassDao ;
+	int status = 0;
+	String actionMessage = null;
+	@Autowired
+	private ForgotPassService forgotPassDao;
+
 	@RequestMapping(value = "/forgotpass", method = RequestMethod.GET)
-	public ModelAndView forgotPassLoadPage(@ModelAttribute("forgotPassForm") AuthenticationBean authenticBean, 
+	public ModelAndView forgotPassLoadPage(@ModelAttribute("forgotPassForm") AuthenticationBean authenticBean,
 			BindingResult result) {
 		System.out.println("!!!!!!!!!!!User Forgot Password Controller!!!!!!!!!!!!!");
 		return new ModelAndView("forgotpass");
-	} 
-	
+	}
+
 	@RequestMapping(value = "/forgotpassword1", method = RequestMethod.POST)
-	public ModelAndView forgotPassUpdate(@ModelAttribute("forgotPassForm") AuthenticationBean authenticBean, 
+	public ModelAndView forgotPassUpdate(@ModelAttribute("forgotPassForm") AuthenticationBean authenticBean,
 			BindingResult result, Model model) {
-		status=	forgotPassDao.forgotPassword(authenticBean);
-		System.out.println("!!!!!!!!!!!pass changed Succefullyyyyyyyy !!!!!!!!!!!!!"+status);
-		model.addAttribute("actionMessage", status == 0? "Password has been Changed Successfully": "User has not been Register Successfully");
+		status = forgotPassDao.forgotPassword(authenticBean);
+		System.out.println("!!!!!!!!!!!pass changed Succefullyyyyyyyy !!!!!!!!!!!!!" + status);
+		model.addAttribute("actionMessage",
+				status == 0 ? "Password has been Changed Successfully" : "User has not been Register Successfully");
 		System.out.println("!!!!!!!!!!!User Forgot Password Controller in database !!!!!!!!!!!!!");
 		return new ModelAndView("registerMsg");
-	} 
+	}
 
 }

@@ -9,7 +9,7 @@ public static Connection conn = null;
 public static Connection  getConnection(){
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistancetracksystem", "root", "mysqldb");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/assistancetracksystem", "root", "root");
 		if(conn != null){
 			System.out.println("Connection Sucess!!!!!!!!!!!!!");
 		}else{

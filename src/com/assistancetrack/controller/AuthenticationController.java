@@ -18,13 +18,19 @@ import com.assistancetrack.bean.AuthenticationBean;
 import com.assistancetrack.bean.DashBoardBean;
 import com.assistancetrack.dao.AuthenticationDaoImpl;
 import com.assistancetrack.dao.DashBoardDao;
+import com.assistancetrack.service.AuthenticationService;
 
 @Controller
 public class AuthenticationController {
 	@Autowired
 	DashBoardDao dashBoardDao;
+	
+//	@Autowired
+//	AuthenticationDaoImpl auothenticInstance;
+	
 	@Autowired
-	AuthenticationDaoImpl auothenticInstance;
+	private AuthenticationService service;
+		
 	boolean userStatus = false;
 	String userMessage = null;
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -50,7 +56,7 @@ public class AuthenticationController {
 		System.out.println("!!!!!!!!!!!UserName!!!!!!!!!!!!!"+uName);
 		System.out.println("!!!!!!!!!!!Password!!!!!!!!!!!!!"+userPassword);
 		if(!uName.isEmpty() && !userPassword.isEmpty()) {
-			userStatus = auothenticInstance.userAuthentication(uName, userPassword);
+			userStatus = service.userAuthentication(uName, userPassword);
 			if(userStatus){
 				userStatus= true;
 				session.setAttribute("uName", uName);

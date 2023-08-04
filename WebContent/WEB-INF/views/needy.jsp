@@ -74,7 +74,7 @@ $(document).ready(function(){
  	<div class="col-md-6"><label for="exampleInputEmail1">Mobile First</label>
      <form:input path="needyMobileNoFirst" class="form-control2" id="needyMobileNoFirst" type="text" aria-describedby="NickName" placeholder="Mobile First"/></div>
     <div class="col-md-6"><label for="exampleInputEmail1">Mobile Second</label>
-    <form:input path="needyMobileNoSecond" class="form-control2" id="needyMobileNoSecond" type="text" aria-describedby="NickName" placeholder="Mobile Second"/></div>
+    <form:input path="needyMobileNoSecond" class="form-control2" id="needyMobileNoSecond" type="text" aria-describedby="NickName" placeholder="Mobile Second optional"/></div>
 </div>
 </div>
 

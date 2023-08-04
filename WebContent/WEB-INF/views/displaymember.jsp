@@ -82,7 +82,7 @@
 			<tr>
 				<th>More Information</th>
 				<th>Nick Name</th>
-				<th>First Name</th>
+				<th>Name</th>
 				<th>Mobile No</th>
 				<th>Received</th>
 				<th>Profession</th>
@@ -91,7 +91,7 @@
 		<tbody>
 			<c:forEach var="memberObj" items="${memberLists}">		
 				<tr>
-					<%-- <td><a href="<c:url value='editMember1/${memberObj.memberFirstContact}' />">More Info</a></td> --%>
+					<%-- <td><a href="<c:url value='editMember1/${memberOb j.memberFirstContact}' />">More Info</a></td> --%>
 					
 					<td>
 						<%--<a class="nav-link" href="addMember.html">More Info</a>--%>
@@ -99,6 +99,7 @@
 					</td>
 					<td><c:out value="${memberObj.memberNikeName}"></c:out></td>
 					<td><c:out value="${memberObj.memberFName}"></c:out></td>
+<%-- 					<td><c:out value="${memberObj.memberLName}"></c:out></td>  --%>
 					<td><c:out value="${memberObj.memberFirstContact}"></c:out></td>
 					<td><c:out value="${memberObj.reciever.ramount}"></c:out></td>
 					<td><c:out value="${memberObj.memberProfession}"></c:out></td>

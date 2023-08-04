@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.assistancetrack.bean.AuthenticationBean;
 import com.assistancetrack.dao.UserRegistrationDAO;
+import com.assistancetrack.service.UserRegistrationService;
 
 @Controller
 public class UserRegisterController {
 	@Autowired
-	UserRegistrationDAO userRegister;
+     private UserRegistrationService userRegister;
 	String actionMessage = null;
 	@RequestMapping(value = "/userregister", method = RequestMethod.GET)
 	public ModelAndView userRegisterLoadPage(@ModelAttribute("userForm") AuthenticationBean authenticBean, 

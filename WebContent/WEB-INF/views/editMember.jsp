@@ -71,7 +71,7 @@ $(document).ready(function(){
 					aria-describedby="NickName" placeholder="NickName"/>
 			</div>
 			<div class="col-md-6">
-				<label for="exampleInputLastName">Name</label> 
+				<label for="exampleInputLastName">FirstName</label> 
 				<form:input path="fName" class="form-control2" id="exampleInputName" type="text"
 				aria-describedby="NickName" placeholder="Name"/>
 			</div>

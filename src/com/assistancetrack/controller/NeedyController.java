@@ -18,12 +18,17 @@ import com.assistancetrack.dao.NeedyDao;
 import com.assistancetrack.dao.NeedyDaoImpl;
 import com.assistancetrack.model.AddMember;
 import com.assistancetrack.model.NeedyEntity;
+import com.assistancetrack.service.NeedyService;
 
 @Controller
 public class NeedyController {
 	String actionMessage = null;
+	
+//	@Autowired
+//	NeedyDao needyObj;
 	@Autowired
-	NeedyDao needyObj;
+	private NeedyService needyService;
+	
 	@RequestMapping(value = "/addNeedy", method = RequestMethod.GET)
 	 public ModelAndView saveNeedy(@ModelAttribute("needyForm") NeedyBean needBean,
 			BindingResult result) {
@@ -33,7 +38,7 @@ public class NeedyController {
 	@RequestMapping(value = "/needy1", method = RequestMethod.POST)
 	 public ModelAndView saveNeedyInDB(@ModelAttribute("needyForm") NeedyBean needBean,
 			BindingResult result,Model model) {
-		Integer saveFlag=needyObj.addNeedy(needBean);
+		Integer saveFlag=needyService.addNeedy(needBean);
 		model.addAttribute("actionMessage", saveFlag>0?"Needy added Sucessfully":"Needy not added Sucessfully");
 	    //return new ModelAndView("redirect:/displayNeedy.html");
 		return new ModelAndView("needyMessage");
@@ -42,7 +47,7 @@ public class NeedyController {
 	@RequestMapping(value = "/displayNeedy.html", method = RequestMethod.GET)
 	public ModelAndView displayNeedyInDB(@ModelAttribute("needyForm") NeedyEntity  needBean,
 			BindingResult result,Model model) {
-		List<Object[]> needylist= needyObj.displayNeedy(needBean);
+		List<Object[]> needylist= needyService.displayNeedy(needBean);
 		model.addAttribute("needylist", needylist);
 		System.out.println("displayNeedy invoked!!!!!!!!");
 		return new ModelAndView("displayNeedy");	
@@ -51,7 +56,7 @@ public class NeedyController {
 	@RequestMapping(value = "/editNeedy/{needyId}/edit", method = RequestMethod.GET)
 	public ModelAndView editNeedy(@PathVariable("needyId") int id,Model model) {
 		System.out.println("id@@@@@" + id);
-		NeedyEntity needEnt =this.needyObj.editNeedyDetails(id);
+		NeedyEntity needEnt =this.needyService.editNeedyDetails(id);
 		NeedyBean needBean =new NeedyBean();
 		System.out.println("getNeedyId@@@@"+needEnt.getNeedyId());
 		System.out.println("needEnt@@@@"+needEnt.getName());
@@ -77,7 +82,7 @@ public class NeedyController {
 	public ModelAndView saveEditNeedy(@ModelAttribute("needyForm") NeedyBean needBean ,Model model) 
 	 {
 		
-		NeedyEntity editFlag = needyObj.updateNeedy(needBean);
+		NeedyEntity editFlag = needyService.updateNeedy(needBean);
 		model.addAttribute("actionMessage", editFlag!=  null ? "Needy updated Sucessfully" : "Needy not updated Sucessfully");
 
 		System.out.println("editFlag!!!!"+editFlag.toString());

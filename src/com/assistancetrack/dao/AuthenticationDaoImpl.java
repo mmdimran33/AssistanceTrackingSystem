@@ -12,7 +12,7 @@ import com.assistancetrack.bean.AuthenticationBean;
 import com.assistancetrack.model.Authentication;
 import com.assistancetrack.model.Reciever;
 @Repository
-public class AuthenticationDaoImpl {
+public class AuthenticationDaoImpl implements AuthenticationDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	//Authentication authenticUser =new Authentication();

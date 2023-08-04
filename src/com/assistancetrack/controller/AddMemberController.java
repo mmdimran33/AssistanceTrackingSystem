@@ -19,13 +19,20 @@ import org.springframework.web.servlet.ModelAndView;
 import com.assistancetrack.bean.AddMemberBean;
 import com.assistancetrack.dao.AddMemberDao;
 import com.assistancetrack.model.AddMember;
+import com.assistancetrack.service.AddMemberService;
 
 @Controller
 public class AddMemberController {
 	String actionMessage = null;
 	private String msg="";
+	
 	@Autowired
-	AddMemberDao memberDao;
+	private AddMemberService service;
+	//AddMemberService service;
+	//AddMemberDao memberDao;
+	
+//	@Autowired
+//	private AddMemberService addMemberService;
 
 	@RequestMapping(value = "/addMember", method = RequestMethod.GET)
 	public ModelAndView saveMember(@ModelAttribute("memberForm") AddMemberBean addMemberBean, BindingResult result) {
@@ -35,7 +42,7 @@ public class AddMemberController {
 	@RequestMapping(value = "/addMember1", method = RequestMethod.POST)
 	public ModelAndView saveMemberInDB(@ModelAttribute("memberForm") AddMemberBean addMemberBean, BindingResult result,
 			Model model) {
-		int saveFlag = (Integer) memberDao.addMemberDetails(addMemberBean);
+		int saveFlag = (Integer) service.addMemberDetails(addMemberBean);
 		model.addAttribute("actionMessage", saveFlag > 0 ? "Member added Sucessfully" : "Member not added Sucessfully");
 		System.out.println("actionMessage Controller!!!!!!!!!!!!" + actionMessage);
 		//msg="Sucess";
@@ -59,7 +66,7 @@ public class AddMemberController {
 		System.out.println("id@@@@@" + id);
 		  
 		
-		AddMember amb =this.memberDao.editMemberDetails(id);
+		AddMember amb =this.service.editMemberDetails(id);
 		AddMemberBean memberBean =new AddMemberBean();
 		memberBean.setMemberId(amb.getMemberId());
 		memberBean.setNikeName(amb.getMemberNikeName());
@@ -79,7 +86,7 @@ public class AddMemberController {
 	public ModelAndView editSaveMember(@ModelAttribute("memberForm") AddMemberBean addMemberBean ,Model model) 
 	 {
 		
-		int editFlag = (Integer) memberDao.editsaveMemberDetails(addMemberBean);
+		int editFlag = (Integer) service.editsaveMemberDetails(addMemberBean);
 		System.out.println("editFlag!!!!!!!!!!!!" + editFlag);
 		model.addAttribute("actionMessage", editFlag > 0 ? "Member updated Sucessfully" : "Member not updated Sucessfully");
 		//return new ModelAndView("redirect:/displayMember.html");
@@ -90,7 +97,7 @@ public class AddMemberController {
 	@RequestMapping(value = "/displayMember", method = RequestMethod.GET)
 	public ModelAndView displayMember(@ModelAttribute("memberForm") AddMember displayAddMember, BindingResult result,
 			Model model) {
-		List<AddMember> memberLists = memberDao.displayMemberDetails(displayAddMember);
+		List<AddMember> memberLists = service.displayMemberDetails(displayAddMember);
 		System.out.println("displayMember controller without DB invoked!!!!!!!!!!!!!!!!!!!!!!");
 		model.addAttribute("memberLists", memberLists);
 		return new ModelAndView("displaymember");

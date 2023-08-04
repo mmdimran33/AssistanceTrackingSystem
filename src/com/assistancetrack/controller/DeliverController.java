@@ -14,24 +14,29 @@ import org.springframework.web.servlet.ModelAndView;
 import com.assistancetrack.bean.DeliverBean;
 import com.assistancetrack.dao.DeliverDao;
 import com.assistancetrack.model.Deliever;
+import com.assistancetrack.service.DeliverService;
 @Controller
 public class DeliverController {
+//	@Autowired
+//	DeliverDao deliverDao;
+	
 	@Autowired
-	DeliverDao deliverDao;
+	private DeliverService deliverService;
+	
 	@Autowired
 	Deliever deliverObj;
 	String actionMessage=null;
 	@RequestMapping(value = "/deliver", method = RequestMethod.GET)
 	public ModelAndView saveDeliver(@ModelAttribute("deliverPaymentsForm") DeliverBean deliverBean, 
 			BindingResult result,Model model) {
-		List<String> needyIdList=deliverDao.getNeedyIdList();
+		List<String> needyIdList=deliverService.getNeedyIdList();
 		model.addAttribute("needyIdList", needyIdList);
 		return new ModelAndView("deliver");
 	} 
 	@RequestMapping(value = "/deliver1", method = RequestMethod.POST)
 	public ModelAndView saveDeliverPayInDB(@ModelAttribute("deliverPaymentsForm") DeliverBean deliverBean, 
 			BindingResult result,Model model) {
-		Integer saveFlag=deliverDao.deliverSavePay(deliverBean);
+		Integer saveFlag=deliverService.deliverSavePay(deliverBean);
 		model.addAttribute("actionMessage", saveFlag>0?"Deliver added Sucessfully":"Deliver not added Sucessfully");
 		System.out.println("!!!!!!invoked DeliverController+++++++++++ ");
 		return new ModelAndView("deliver");

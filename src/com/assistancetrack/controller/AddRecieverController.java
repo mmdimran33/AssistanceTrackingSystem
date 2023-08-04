@@ -18,11 +18,17 @@ import com.assistancetrack.dao.RecieverDao;
 import com.assistancetrack.dao.RecieverDaoImpl;
 import com.assistancetrack.model.AddMember;
 import com.assistancetrack.model.Reciever;
+import com.assistancetrack.service.RecieverService;
 @Controller
 public class AddRecieverController {
 	String actionMessage = null;
+//	@Autowired
+//	RecieverDao recieverObj;
+	
 	@Autowired
-	RecieverDao recieverObj;
+    private RecieverService recieverObj;
+	
+	
 	@RequestMapping(value = "/addReciever", method = RequestMethod.GET)
 	public ModelAndView saveReciever(@ModelAttribute("recieverForm") RecieverBean receiverBean, 
 			BindingResult result,Model model) {
