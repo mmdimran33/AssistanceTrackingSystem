@@ -20,6 +20,7 @@ private SessionFactory sessionFactory;
 @Autowired
 Reciever recieverobj ;//=new Reciever();
 int status =0;
+	@Override
 	public Integer addRecieverDetails(RecieverBean recieverBean){
 		Date rcDate = new Date();
 		recieverobj.setRnickName(recieverBean.getNickName());
@@ -31,7 +32,8 @@ int status =0;
 		session.close();
 		return status;
 	}
-        @SuppressWarnings("unchecked")
+        @Override
+		@SuppressWarnings("unchecked")
 		public  List<Object[]> displayReciever(Reciever displayReciever){
 		Session session1= sessionFactory.openSession();
 		//Query query = session1.createQuery("from Reciever");

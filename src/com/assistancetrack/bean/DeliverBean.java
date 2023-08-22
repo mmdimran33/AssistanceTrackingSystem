@@ -1,7 +1,5 @@
 package com.assistancetrack.bean;
 
-import org.springframework.stereotype.Component;
-
 //@Component
 public class DeliverBean {
 private Integer needyID;

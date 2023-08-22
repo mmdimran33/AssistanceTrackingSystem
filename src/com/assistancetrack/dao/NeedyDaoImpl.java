@@ -3,7 +3,6 @@ package com.assistancetrack.dao;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.assistancetrack.bean.NeedyBean;
-import com.assistancetrack.model.AddMember;
 import com.assistancetrack.model.NeedyEntity;
 @Repository
 public class NeedyDaoImpl implements NeedyDao{
@@ -62,6 +60,7 @@ public class NeedyDaoImpl implements NeedyDao{
 		return ne;
 	}
 
+	@Override
 	public NeedyEntity updateNeedy(NeedyBean needyBean) {
 		
 		System.out.println("needBean.getNeedyName()"+needyBean.getNeedyName());

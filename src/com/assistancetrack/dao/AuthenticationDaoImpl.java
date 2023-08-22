@@ -7,10 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.assistancetrack.bean.AuthenticationBean;
-import com.assistancetrack.model.Authentication;
-import com.assistancetrack.model.Reciever;
 @Repository
 public class AuthenticationDaoImpl {
 	@Autowired

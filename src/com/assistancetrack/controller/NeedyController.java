@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.assistancetrack.bean.AddMemberBean;
 import com.assistancetrack.bean.NeedyBean;
 import com.assistancetrack.dao.NeedyDao;
-import com.assistancetrack.dao.NeedyDaoImpl;
-import com.assistancetrack.model.AddMember;
 import com.assistancetrack.model.NeedyEntity;
 
 @Controller
