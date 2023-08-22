@@ -1,10 +1,5 @@
 package com.assistancetrack.dao;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.transaction.Transaction;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,6 +16,7 @@ public class ForgotPassDaoImpl implements ForgotPassDao{
 	@Autowired
 	UserRegistrationEntity userRegisEntity;
 	Integer status=0;
+	@Override
 	public Integer forgotPassword(AuthenticationBean authenticationBeanObj) {
 		System.out.println(authenticationBeanObj);
 		Session session = sessionFactory.openSession();

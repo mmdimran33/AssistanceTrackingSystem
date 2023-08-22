@@ -7,12 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.assistancetrack.bean.DashBoardBean;
 
 @Repository
 public class DashBoardDaoImpl implements DashBoardDao{
 	@Autowired
 	private SessionFactory sessionFactory;
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Object[]> displayDashBoard(){
 		Session session=sessionFactory.openSession();

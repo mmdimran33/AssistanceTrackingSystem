@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.cfg.Configuration;
 
 @SuppressWarnings("deprication")
 public class HibernateUtil {

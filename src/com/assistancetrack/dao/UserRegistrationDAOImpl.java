@@ -15,6 +15,7 @@ public class UserRegistrationDAOImpl implements UserRegistrationDAO {
 	@Autowired
 	UserRegistrationEntity userRegisEntity;
 	int status=0;
+	@Override
 	public Integer saveUserRegistration(AuthenticationBean authenticBean){
 		Session session = sessionFactory.openSession();
 		userRegisEntity.setUserName(authenticBean.getUserName());

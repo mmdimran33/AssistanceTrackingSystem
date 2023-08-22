@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.assistancetrack.bean.AddMemberBean;
 import com.assistancetrack.bean.RecieverBean;
 import com.assistancetrack.dao.RecieverDao;
-import com.assistancetrack.dao.RecieverDaoImpl;
-import com.assistancetrack.model.AddMember;
 import com.assistancetrack.model.Reciever;
 @Controller
 public class AddRecieverController {
@@ -33,7 +30,7 @@ public class AddRecieverController {
 	@RequestMapping(value = "/addReciever1", method = RequestMethod.POST)
 	public ModelAndView saveRecieverInDB(@ModelAttribute("recieverForm") RecieverBean receiverBean, 
 			BindingResult result,Model model) {
-		int saveFlag=(Integer)recieverObj.addRecieverDetails(receiverBean);
+		int saveFlag=recieverObj.addRecieverDetails(receiverBean);
 		model.addAttribute("actionMessage", saveFlag>0?"Receiver added Sucessfully":"Receiver not added Sucessfully");
 		return new ModelAndView("receiverMessage");
 	} 
